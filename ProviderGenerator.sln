@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Solution Items\MARC.Everest.Formatters.XML.Datatypes.R1.dll = Solution Items\MARC.Everest.Formatters.XML.Datatypes.R1.dll
 		Solution Items\MARC.Everest.Formatters.XML.ITS1.dll = Solution Items\MARC.Everest.Formatters.XML.ITS1.dll
 		Solution Items\MARC.Everest.RMIM.CA.R020402.dll = Solution Items\MARC.Everest.RMIM.CA.R020402.dll
+		Solution Items\MARC.Everest.RMIM.UV.NE2008.dll = Solution Items\MARC.Everest.RMIM.UV.NE2008.dll
 		Solution Items\MARC.HI.EHRS.SVC.Core.dll = Solution Items\MARC.HI.EHRS.SVC.Core.dll
 		Solution Items\MohawkCollege.Util.Console.Parameters.dll = Solution Items\MohawkCollege.Util.Console.Parameters.dll
 		Solution Items\Newtonsoft.Json.dll = Solution Items\Newtonsoft.Json.dll
@@ -23,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderGenerator.Core", "ProviderGenerator.Core\ProviderGenerator.Core.csproj", "{C0C90B48-FC3D-4488-8659-079C0C89A047}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderGenerator.HL7v3", "ProviderGenerator.HL7v3\ProviderGenerator.HL7v3.csproj", "{9B894FAD-B111-4AEA-96F8-4D8FD13DC26F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +41,10 @@ Global
 		{C0C90B48-FC3D-4488-8659-079C0C89A047}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0C90B48-FC3D-4488-8659-079C0C89A047}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0C90B48-FC3D-4488-8659-079C0C89A047}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B894FAD-B111-4AEA-96F8-4D8FD13DC26F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B894FAD-B111-4AEA-96F8-4D8FD13DC26F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B894FAD-B111-4AEA-96F8-4D8FD13DC26F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B894FAD-B111-4AEA-96F8-4D8FD13DC26F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
