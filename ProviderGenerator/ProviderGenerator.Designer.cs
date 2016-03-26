@@ -1,6 +1,6 @@
 ﻿namespace ProviderGenerator
 {
-	partial class Service1
+	partial class ProviderGenerator
 	{
 		/// <summary> 
 		/// Required designer variable.
