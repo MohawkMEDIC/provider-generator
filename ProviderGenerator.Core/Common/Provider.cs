@@ -16,49 +16,45 @@
  * User: Nityan
  * Date: 2016-3-26
  */
-using ProviderGenerator.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProviderGenerator.Core.Common;
 
-namespace ProviderGenerator.HL7v3
+namespace ProviderGenerator.Core.Common
 {
-	public class HL7v3SenderService : IHL7v3SenderService
+	public class Provider
 	{
-		private IServiceProvider context;
-
-		public IServiceProvider Context
+		public Provider()
 		{
-			get
-			{
-				return this.context;
-			}
-			set
-			{
-				this.context = value;
-			}
+
 		}
 
-		#region IHL7v3SenderService Members
+		public string AddressLine { get; set; }
 
-		public void Send(IEnumerable<Provider> providers)
-		{
-			foreach (var item in providers)
-			{
-				var graphable = EverestUtil.GenerateAddProviderRequest();
+		public string City { get; set; }
 
-				EverestUtil.Sendv3Messages(graphable, "pr");
-			}
-		}
+		public DateTime DateOfBirth { get; set; }
 
-		public void Send(Provider provider)
-		{
-		}
+		public string Email { get; set; }
 
-		#endregion
+		public string FirstName { get; set; }
 
+		public string Gender { get; set; }
+
+		public string Language { get; set; }
+
+		public string LastName { get; set; }
+
+		public string MiddleName { get; set; }
+
+		public string PhoneNo { get; set; }
+
+		public string PostalCode { get; set; }
+
+		public string PractitionerNo { get; set; }
+
+		public string Province { get; set; }
 	}
 }

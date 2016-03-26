@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderGenerator.Core", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderGenerator.HL7v3", "ProviderGenerator.HL7v3\ProviderGenerator.HL7v3.csproj", "{9B894FAD-B111-4AEA-96F8-4D8FD13DC26F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderGenerator.Messaging", "ProviderGenerator.Messaging\ProviderGenerator.Messaging.csproj", "{7B68ED20-D0BE-4FD6-B5CA-9D86F5E33E71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderGenerator.Randomizer", "ProviderGenerator.Randomizer\ProviderGenerator.Randomizer.csproj", "{1A16DE8F-31B7-4E5F-B8ED-09BB5BF7704D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{9B894FAD-B111-4AEA-96F8-4D8FD13DC26F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B894FAD-B111-4AEA-96F8-4D8FD13DC26F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B894FAD-B111-4AEA-96F8-4D8FD13DC26F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B68ED20-D0BE-4FD6-B5CA-9D86F5E33E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B68ED20-D0BE-4FD6-B5CA-9D86F5E33E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B68ED20-D0BE-4FD6-B5CA-9D86F5E33E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B68ED20-D0BE-4FD6-B5CA-9D86F5E33E71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A16DE8F-31B7-4E5F-B8ED-09BB5BF7704D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A16DE8F-31B7-4E5F-B8ED-09BB5BF7704D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A16DE8F-31B7-4E5F-B8ED-09BB5BF7704D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A16DE8F-31B7-4E5F-B8ED-09BB5BF7704D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

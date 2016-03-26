@@ -16,20 +16,23 @@
  * User: Nityan
  * Date: 2016-3-26
  */
-using MARC.HI.EHRS.SVC.Core.Services;
-using ProviderGenerator.Core.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using ProviderGenerator.Messaging.Model;
+using System.ComponentModel;
+using System.ServiceModel;
 using System.Threading.Tasks;
 
-namespace ProviderGenerator.Core
+namespace ProviderGenerator.Messaging.Services
 {
-	public interface IHL7v3SenderService : IUsesHostContext
+	/// <summary>
+	/// Represents a provider generation service interface.
+	/// </summary>
+	[ServiceContract(Namespace = "http://marc-hi.ca/xmlns/patgensvc")]
+	public interface IGenerationService
 	{
-		void Send(IEnumerable<Provider> providers);
+		[OperationContract(Name = "GenerateProviders", Action = "GenerateProviders")]
+		GenerationResponse GenerateProviders(int count);
 
-		void Send(Provider provider);
+		[OperationContract(Name = "GeneratePatientsAsync", Action = "GeneratePatientsAsync")]
+		Task<GenerationResponse> GenerateProvidersAsync(int count);
 	}
 }

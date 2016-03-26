@@ -16,15 +16,22 @@
  * User: Nityan
  * Date: 2016-3-26
  */
+using MARC.Everest.Connectors;
+using MARC.Everest.Connectors.WCF;
 using MARC.Everest.DataTypes;
+using MARC.Everest.Formatters.XML.Datatypes.R1;
+using MARC.Everest.Formatters.XML.ITS1;
 using MARC.Everest.Interfaces;
 using MARC.Everest.RMIM.CA.R020402.Interactions;
 using MARC.Everest.RMIM.UV.NE2008.Interactions;
+using MARC.Everest.Xml;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace ProviderGenerator.HL7v3
 {
@@ -32,7 +39,7 @@ namespace ProviderGenerator.HL7v3
 	{
 		internal static IGraphable GenerateAddProviderRequest()
 		{
-			return null;
+			return GenerateCanadianRequest();
 		}
 
 		private static IGraphable GenerateCanadianRequest()
@@ -45,11 +52,39 @@ namespace ProviderGenerator.HL7v3
 				},
 				controlActEvent = new MARC.Everest.RMIM.CA.R020402.MFMI_MT700711CA.ControlActEvent<MARC.Everest.RMIM.CA.R020402.PRPM_MT301010CA.RoleChoice>
 				{
-					Author = new MARC.Everest.RMIM.CA.R020402.MFMI_MT700751CA.Author(),
+					Author = new MARC.Everest.RMIM.CA.R020402.MFMI_MT700751CA.Author
+					{
+						AuthorPerson = new MARC.Everest.RMIM.CA.R020402.COCT_MT090102CA.AssignedEntity
+						{
+							AssignedPerson = new MARC.Everest.RMIM.CA.R020402.COCT_MT090102CA.Person
+							{
+								Name = new PN(EntityNameUse.Legal, new List<ENXP>
+								 {
+									 new ENXP
+									 {
+										 Type = EntityNamePartType.Family,
+										 Value = "Khanna"
+									 },
+									 new ENXP
+									 {
+										 Type = EntityNamePartType.Given,
+										 Value = "Nityan"
+									 }
+								 })
+							},
+							Id = new SET<II>
+							 {
+								 new II("1.3.6.1.4.1.33349.3.1.3.201203.1.0", "1234")
+							 }
+						},
+						Time = new TS(DateTime.Now)
+					},
+					Code = PRPM_IN301010CA.GetTriggerEvent(),
 					EffectiveTime = new IVL<TS>(new TS(DateTime.Now)),
 					Id = new II(Guid.NewGuid()),
 					Subject = new MARC.Everest.RMIM.CA.R020402.MFMI_MT700711CA.Subject2<MARC.Everest.RMIM.CA.R020402.PRPM_MT301010CA.RoleChoice>
 					{
+						ContextConductionInd = new BL(true),
 						RegistrationRequest = new MARC.Everest.RMIM.CA.R020402.MFMI_MT700711CA.RegistrationRequest<MARC.Everest.RMIM.CA.R020402.PRPM_MT301010CA.RoleChoice>
 						{
 							Subject = new MARC.Everest.RMIM.CA.R020402.MFMI_MT700711CA.Subject4<MARC.Everest.RMIM.CA.R020402.PRPM_MT301010CA.RoleChoice>
@@ -253,7 +288,7 @@ namespace ProviderGenerator.HL7v3
 				{
 					Device = new MARC.Everest.RMIM.CA.R020402.MCCI_MT002200CA.Device2
 					{
-						Id = new II("", "")
+						Id = new II("1.3.6.1.4.1.33349.3.1.6.2016.03.06.1", "PR1")
 					}
 				},
 				ResponseModeCode = new CS<MARC.Everest.RMIM.CA.R020402.Vocabulary.ResponseMode>(MARC.Everest.RMIM.CA.R020402.Vocabulary.ResponseMode.Immediate),
@@ -261,7 +296,7 @@ namespace ProviderGenerator.HL7v3
 				{
 					Device = new MARC.Everest.RMIM.CA.R020402.MCCI_MT002200CA.Device1
 					{
-						Id = new II("", "")
+						Id = new II("1.3.6.1.4.1.33349.3.1.99.0", "Nityan-PC")
 					}
 				}
 			};
@@ -310,6 +345,119 @@ namespace ProviderGenerator.HL7v3
 			};
 
 			return message;
+		}
+
+		/// <summary>
+		/// Logs an IGraphable message.
+		/// </summary>
+		/// <param name="graphable">The IGraphable message to log.</param>
+		internal static void LogGraphable(IGraphable graphable)
+		{
+			XmlWriter writer = null;
+
+			XmlIts1Formatter formatter = new XmlIts1Formatter
+			{
+				ValidateConformance = false
+			};
+
+			DatatypeFormatter dtf = new DatatypeFormatter();
+
+			formatter.GraphAides.Add(dtf);
+
+			StringBuilder sb = new StringBuilder();
+
+			writer = XmlWriter.Create(sb, new XmlWriterSettings() { Indent = true, OmitXmlDeclaration = true });
+
+			XmlStateWriter stateWriter = new XmlStateWriter(writer);
+
+			var result = formatter.Graph(stateWriter, graphable);
+
+			stateWriter.Flush();
+
+			Trace.TraceInformation(sb.ToString());
+		}
+
+		/// <summary>
+		/// Send HL7v3 messages to a specified endpoint.
+		/// </summary>
+		/// <param name="epName">The endpoint name.</param>
+		internal static bool Sendv3Messages(IGraphable graphable, string endpointName)
+		{
+			bool retVal = true;
+
+			WcfClientConnector client = new WcfClientConnector(string.Format("endpointName={0}", endpointName));
+
+			XmlIts1Formatter formatter = new XmlIts1Formatter
+			{
+				ValidateConformance = true
+			};
+
+			client.Formatter = formatter;
+			client.Formatter.GraphAides.Add(new DatatypeFormatter());
+
+			client.Open();
+
+			var sendResult = client.Send(graphable);
+
+#if DEBUG
+			Trace.TraceInformation("Sending HL7v3 message to endpoint: " + client.ConnectionString);
+			LogGraphable(graphable);
+#endif
+
+			if (sendResult.Code != ResultCode.Accepted && sendResult.Code != ResultCode.AcceptedNonConformant)
+			{
+				Trace.TraceError("Send result: " + Enum.GetName(typeof(ResultCode), sendResult.Code));
+				retVal = false;
+
+				// show send result errors
+				foreach (var detail in sendResult.Details.Where(x => x.Type == ResultDetailType.Error))
+				{
+					Trace.TraceError(detail.Message);
+					Console.WriteLine(Environment.NewLine);
+					Trace.TraceError(detail.Location);
+					Console.WriteLine(Environment.NewLine);
+
+					if (detail.Exception != null)
+					{
+						Trace.TraceError(detail.Exception.StackTrace);
+					}
+				}
+			}
+
+			var recvResult = client.Receive(sendResult);
+
+			if (recvResult.Code != ResultCode.Accepted && recvResult.Code != ResultCode.AcceptedNonConformant)
+			{
+				Trace.TraceError("Receive result: " + Enum.GetName(typeof(ResultCode), recvResult.Code));
+				retVal = false;
+
+				// show receive result errors
+				foreach (var detail in recvResult.Details.Where(x => x.Type == ResultDetailType.Error))
+				{
+					Trace.TraceError(detail.Message);
+
+					if (detail.Exception != null)
+					{
+						Trace.TraceError(detail.Exception.StackTrace);
+					}
+				}
+			}
+
+			var result = recvResult.Structure;
+
+			if (result == null)
+			{
+				Trace.TraceError("Receive result structure is null");
+				retVal = false;
+			}
+
+			client.Close();
+
+#if DEBUG
+			LogGraphable(recvResult.Structure);
+#endif
+
+			return retVal;
 		}
 	}
 }

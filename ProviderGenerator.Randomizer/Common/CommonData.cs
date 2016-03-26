@@ -16,49 +16,25 @@
  * User: Nityan
  * Date: 2016-3-26
  */
-using ProviderGenerator.Core;
-using System;
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ProviderGenerator.Core.Common;
+using System.Xml.Serialization;
 
-namespace ProviderGenerator.HL7v3
+namespace ProviderGenerator.Randomizer.Common
 {
-	public class HL7v3SenderService : IHL7v3SenderService
+	[XmlRoot("CommonData")]
+	public class CommonData
 	{
-		private IServiceProvider context;
+		[XmlElement("City")]
+		public List<string> Cities { get; set; }
 
-		public IServiceProvider Context
-		{
-			get
-			{
-				return this.context;
-			}
-			set
-			{
-				this.context = value;
-			}
-		}
+		[XmlElement("FamilyName")]
+		public List<string> FamilyNames { get; set; }
 
-		#region IHL7v3SenderService Members
+		[XmlElement("GivenName")]
+		public List<GivenNameGenderPair> GivenNames { get; set; }
 
-		public void Send(IEnumerable<Provider> providers)
-		{
-			foreach (var item in providers)
-			{
-				var graphable = EverestUtil.GenerateAddProviderRequest();
-
-				EverestUtil.Sendv3Messages(graphable, "pr");
-			}
-		}
-
-		public void Send(Provider provider)
-		{
-		}
-
-		#endregion
-
+		[XmlElement("StreetName")]
+		public List<string> StreetNames { get; set; }
 	}
 }

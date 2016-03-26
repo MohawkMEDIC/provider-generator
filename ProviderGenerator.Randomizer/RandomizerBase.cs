@@ -16,49 +16,35 @@
  * User: Nityan
  * Date: 2016-3-26
  */
-using ProviderGenerator.Core;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ProviderGenerator.Core.Common;
+using System.Reflection;
+using System.Xml.Serialization;
 
-namespace ProviderGenerator.HL7v3
+namespace ProviderGenerator.Randomizer
 {
-	public class HL7v3SenderService : IHL7v3SenderService
+	public abstract class RandomizerBase<T> where T : class
 	{
-		private IServiceProvider context;
-
-		public IServiceProvider Context
+		protected virtual T LoadData(string filename)
 		{
-			get
+			string fn = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), filename);
+			FileStream fs = null;
+			try
 			{
-				return this.context;
+				fs = File.OpenRead(fn);
+				XmlSerializer xsz = new XmlSerializer(typeof(T));
+				return xsz.Deserialize(fs) as T;
 			}
-			set
+			finally
 			{
-				this.context = value;
-			}
-		}
-
-		#region IHL7v3SenderService Members
-
-		public void Send(IEnumerable<Provider> providers)
-		{
-			foreach (var item in providers)
-			{
-				var graphable = EverestUtil.GenerateAddProviderRequest();
-
-				EverestUtil.Sendv3Messages(graphable, "pr");
+				if (fs != null)
+				{
+					fs.Close();
+					fs.Dispose();
+				}
 			}
 		}
-
-		public void Send(Provider provider)
-		{
-		}
-
-		#endregion
-
 	}
 }

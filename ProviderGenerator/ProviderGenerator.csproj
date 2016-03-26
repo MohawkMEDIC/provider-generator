@@ -68,6 +68,24 @@
     <None Include="App.config" />
     <None Include="ProviderGenerator.licenseheader" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProviderGenerator.Core\ProviderGenerator.Core.csproj">
+      <Project>{c0c90b48-fc3d-4488-8659-079c0c89a047}</Project>
+      <Name>ProviderGenerator.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProviderGenerator.HL7v3\ProviderGenerator.HL7v3.csproj">
+      <Project>{9b894fad-b111-4aea-96f8-4d8fd13dc26f}</Project>
+      <Name>ProviderGenerator.HL7v3</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProviderGenerator.Messaging\ProviderGenerator.Messaging.csproj">
+      <Project>{7b68ed20-d0be-4fd6-b5ca-9d86f5e33e71}</Project>
+      <Name>ProviderGenerator.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProviderGenerator.Randomizer\ProviderGenerator.Randomizer.csproj">
+      <Project>{1a16de8f-31b7-4e5f-b8ed-09bb5bf7704d}</Project>
+      <Name>ProviderGenerator.Randomizer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

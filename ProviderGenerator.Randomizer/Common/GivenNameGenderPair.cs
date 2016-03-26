@@ -16,49 +16,21 @@
  * User: Nityan
  * Date: 2016-3-26
  */
-using ProviderGenerator.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProviderGenerator.Core.Common;
+using System.Xml.Serialization;
 
-namespace ProviderGenerator.HL7v3
+namespace ProviderGenerator.Randomizer.Common
 {
-	public class HL7v3SenderService : IHL7v3SenderService
+	public class GivenNameGenderPair
 	{
-		private IServiceProvider context;
+		[XmlAttribute("gender")]
+		public string GenderCode { get; set; }
 
-		public IServiceProvider Context
-		{
-			get
-			{
-				return this.context;
-			}
-			set
-			{
-				this.context = value;
-			}
-		}
-
-		#region IHL7v3SenderService Members
-
-		public void Send(IEnumerable<Provider> providers)
-		{
-			foreach (var item in providers)
-			{
-				var graphable = EverestUtil.GenerateAddProviderRequest();
-
-				EverestUtil.Sendv3Messages(graphable, "pr");
-			}
-		}
-
-		public void Send(Provider provider)
-		{
-		}
-
-		#endregion
-
+		[XmlText]
+		public string Name { get; set; }
 	}
 }

@@ -16,49 +16,34 @@
  * User: Nityan
  * Date: 2016-3-26
  */
-using ProviderGenerator.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProviderGenerator.Core.Common;
 
-namespace ProviderGenerator.HL7v3
+namespace ProviderGenerator.Messaging.Model
 {
-	public class HL7v3SenderService : IHL7v3SenderService
+	/// <summary>
+	/// Represents a generation response.
+	/// </summary>
+	public class GenerationResponse
 	{
-		private IServiceProvider context;
-
-		public IServiceProvider Context
-		{
-			get
-			{
-				return this.context;
-			}
-			set
-			{
-				this.context = value;
-			}
-		}
-
-		#region IHL7v3SenderService Members
-
-		public void Send(IEnumerable<Provider> providers)
-		{
-			foreach (var item in providers)
-			{
-				var graphable = EverestUtil.GenerateAddProviderRequest();
-
-				EverestUtil.Sendv3Messages(graphable, "pr");
-			}
-		}
-
-		public void Send(Provider provider)
+		/// <summary>
+		/// Initializes a new instance of the GenerationResponse class.
+		/// </summary>
+		public GenerationResponse()
 		{
 		}
 
-		#endregion
+		/// <summary>
+		/// The messages, if any.
+		/// </summary>
+		public List<string> Messages { get; set; }
 
+		/// <summary>
+		/// When true, a problem occurred when generating patients.
+		/// </summary>
+		public bool HasErrors { get; set; }
 	}
 }
