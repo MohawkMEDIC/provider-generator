@@ -31,8 +31,5 @@ namespace ProviderGenerator.Messaging.Services
 	{
 		[OperationContract(Name = "GenerateProviders", Action = "GenerateProviders")]
 		GenerationResponse GenerateProviders(int count);
-
-		[OperationContract(Name = "GeneratePatientsAsync", Action = "GeneratePatientsAsync")]
-		Task<GenerationResponse> GenerateProvidersAsync(int count);
 	}
 }
