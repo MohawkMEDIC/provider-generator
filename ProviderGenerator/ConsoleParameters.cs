@@ -16,39 +16,30 @@
  * User: Nityan
  * Date: 2016-3-26
  */
-using MARC.HI.EHRS.SVC.Core;
-using System;
-using System.Collections.Generic;
+using MohawkCollege.Util.Console.Parameters;
 using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProviderGenerator
 {
-	public partial class ProviderGenerator : ServiceBase
+	/// <summary>
+	/// Console parameters for startup.
+	/// </summary>
+	public class ConsoleParameters
 	{
-		public ProviderGenerator()
-		{
-			InitializeComponent();
-		}
+		/// <summary>
+		/// When true, parameters should be shown.
+		/// </summary>
+		[Description("Shows help and exits")]
+		[Parameter("?")]
+		[Parameter("help")]
+		public bool ShowHelp { get; set; }
 
-		protected override void OnStart(string[] args)
-		{
-			ExitCode = ServiceUtil.Start(typeof(Program).GUID);
-			if (ExitCode != 0)
-				Stop();
-
-			Trace.TraceInformation("Service Started");
-		}
-
-		protected override void OnStop()
-		{
-			Trace.TraceInformation("Service Stopped");
-			ServiceUtil.Stop();
-		}
+		/// <summary>
+		/// When true console mode should be enabled.
+		/// </summary>
+		[Description("Instructs the host process to run in console mode")]
+		[Parameter("c")]
+		[Parameter("console")]
+		public bool ConsoleMode { get; set; }
 	}
 }
