@@ -25,6 +25,7 @@ using MARC.Everest.Interfaces;
 using MARC.Everest.RMIM.CA.R020402.Interactions;
 using MARC.Everest.RMIM.UV.NE2008.Interactions;
 using MARC.Everest.Xml;
+using ProviderGenerator.Core.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -37,12 +38,70 @@ namespace ProviderGenerator.HL7v3
 {
 	internal static class EverestUtil
 	{
-		internal static IGraphable GenerateAddProviderRequest()
+		internal static IGraphable GenerateAddProviderRequest(Provider provider)
 		{
-			return GenerateCanadianRequest();
+			return GenerateCanadianRequest(provider);
 		}
 
-		private static IGraphable GenerateCanadianRequest()
+		private static AD CreateAddress(Provider provider)
+		{
+			AD address = new AD(PostalAddressUse.PrimaryHome, new List<ADXP>
+			{
+				new ADXP
+				{
+					Type = AddressPartType.City,
+					Value = provider.City
+				},
+				new ADXP
+				{
+					Type = AddressPartType.Country,
+					Value = "Canada"
+				},
+				new ADXP
+				{
+					Type = AddressPartType.PostalCode,
+					Value = provider.PostalCode
+				},
+				new ADXP
+				{
+					Type = AddressPartType.StreetAddressLine,
+					Value = provider.AddressLine
+				}
+			});
+
+			return address;
+		}
+
+		private static MARC.Everest.RMIM.CA.R020402.Vocabulary.AdministrativeGender CreateGender(Provider provider)
+		{
+			return provider.Gender == "M" ? MARC.Everest.RMIM.CA.R020402.Vocabulary.AdministrativeGender.Male : MARC.Everest.RMIM.CA.R020402.Vocabulary.AdministrativeGender.Female;
+		}
+
+		private static PN CreateName(Provider provider)
+		{
+			PN personName = new PN(new List<ENXP>
+			{
+				new ENXP
+				{
+					Type = EntityNamePartType.Family,
+					Value = provider.LastName
+				},
+				new ENXP
+				{
+					Type = EntityNamePartType.Given,
+					Value = provider.FirstName,
+				},
+				new ENXP
+				{
+					Type = EntityNamePartType.Given,
+					Value = provider.MiddleName
+				}
+			});
+
+			return personName;
+		}
+
+		private static IGraphable GenerateCanadianRequest(Provider provider)
 		{
 			PRPM_IN301010CA message = new PRPM_IN301010CA
 			{
@@ -93,70 +152,21 @@ namespace ProviderGenerator.HL7v3
 									new II
 									{
 										Displayable = true,
-										Root = "1.3.6.1.4.1.33349.4.100.1.1",
-										Extension = "19872639213"
+										Root = "1.3.6.1.4.1.33349.3.1.6.2016.03.27.1",
+										Extension = "12384" + new Random().Next(100, 10000)
 									},
 									new CV<MARC.Everest.RMIM.CA.R020402.Vocabulary.AssignedRoleType>(MARC.Everest.RMIM.CA.R020402.Vocabulary.AssignedRoleType.StaffPhysician),
 									new LIST<PN>
 									{
-										new PN(EntityNameUse.Legal, new LIST<ENXP>
-										{
-											new ENXP
-											{
-												Type = EntityNamePartType.Family,
-												Value = "Khanna"
-											},
-											new ENXP
-											{
-												Type = EntityNamePartType.Given,
-												Value = "Nityan"
-											},
-											new ENXP
-											{
-												Type = EntityNamePartType.Given,
-												Value = "Dave"
-											},
-											new ENXP
-											{
-												Type = EntityNamePartType.Given,
-												Value = "Paul"
-											},
-											new ENXP
-											{
-												Qualifier = new SET<CS<EntityNamePartQualifier>>(new CS<EntityNamePartQualifier>(EntityNamePartQualifier.Suffix)),
-												Value = "M.D."
-											}
-										})
+										CreateName(provider)
 									},
 									new LIST<AD>
 									{
-										new AD(PostalAddressUse.WorkPlace, new List<ADXP>
-										{
-											new ADXP
-											{
-												Type = AddressPartType.AddressLine,
-												Value = "711 Concession St"
-											},
-											new ADXP
-											{
-												Type = AddressPartType.City,
-												Value = "Hamilton"
-											},
-											new ADXP
-											{
-												Type = AddressPartType.Country,
-												Value = "Canada"
-											},
-											new ADXP
-											{
-												Type = AddressPartType.PostalCode,
-												Value = "L8V 1C3"
-											}
-										})
+										CreateAddress(provider)
 									},
 									new LIST<TEL>
 									{
-										new TEL("905 521 2100")
+										new TEL(provider.PhoneNo)
 									},
 									new CS<MARC.Everest.RMIM.CA.R020402.Vocabulary.RoleStatus>
 									{
@@ -168,7 +178,7 @@ namespace ProviderGenerator.HL7v3
 									},
 									new MARC.Everest.RMIM.CA.R020402.PRPM_MT301010CA.PrincipalPerson
 									{
-										AdministrativeGenderCode = new CV<MARC.Everest.RMIM.CA.R020402.Vocabulary.AdministrativeGender>(MARC.Everest.RMIM.CA.R020402.Vocabulary.AdministrativeGender.Undifferentiated),
+										AdministrativeGenderCode = new CV<MARC.Everest.RMIM.CA.R020402.Vocabulary.AdministrativeGender>(CreateGender(provider)),
 										Birthplace = new MARC.Everest.RMIM.CA.R020402.PRPM_MT303010CA.Birthplace
 										{
 											Addr = new AD(PostalAddressUse.Public, new List<ADXP>
@@ -200,7 +210,7 @@ namespace ProviderGenerator.HL7v3
 												}
 											})
 										},
-										BirthTime = new TS(new DateTime(1965, 03, 05, 11, 23, 09), DatePrecision.Full),
+										BirthTime = new TS(provider.DateOfBirth),
 										DeceasedInd = new BL(false),
 										Id = new II
 										{

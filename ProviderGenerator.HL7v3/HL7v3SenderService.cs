@@ -46,9 +46,9 @@ namespace ProviderGenerator.HL7v3
 
 		public void Send(IEnumerable<Provider> providers)
 		{
-			foreach (var item in providers)
+			foreach (var provider in providers)
 			{
-				var graphable = EverestUtil.GenerateAddProviderRequest();
+				var graphable = EverestUtil.GenerateAddProviderRequest(provider);
 
 				EverestUtil.Sendv3Messages(graphable, "pr");
 			}
