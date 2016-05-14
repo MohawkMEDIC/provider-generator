@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderGenerator", "ProviderGenerator\ProviderGenerator.csproj", "{3A717904-401B-408B-BC3D-B46A8DC510D9}"
 EndProject
@@ -30,6 +30,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderGenerator.Messaging", "ProviderGenerator.Messaging\ProviderGenerator.Messaging.csproj", "{7B68ED20-D0BE-4FD6-B5CA-9D86F5E33E71}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderGenerator.Randomizer", "ProviderGenerator.Randomizer\ProviderGenerator.Randomizer.csproj", "{1A16DE8F-31B7-4E5F-B8ED-09BB5BF7704D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BE697420-9ECE-4FE7-A8D1-3F6B49DCA0DE}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
