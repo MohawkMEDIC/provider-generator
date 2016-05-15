@@ -1,0 +1,101 @@
+﻿@model ProviderGenerator.Web.Models.ViewModels.SessionViewModel
+@{
+    ViewBag.Title = "Running";
+}
+
+<div id="session" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <!-- Header -->
+    <div id="header">
+        <div class="panel-heading page-title" aria-expanded="false">
+            @Html.ActionLink("Session: " + Model.SessionId, "Session", new { sessionId = Model.SessionId }, new { @class = "pull-left" })
+            <div class="pull-right" aria-expanded="false">
+                <span>
+                    <span id="runningTime" class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- End Header -->
+    @*@foreach (var item in Model.ComponentProgressViewModels)
+    {
+        string componentName = Enum.GetName(typeof(Maximus.Models.DbModels.Component), item.Component);
+
+        <div class="check-in panel panel-default">
+            <div class="panel-heading" role="button">
+                <a role="button" class="row" href="/@componentName/Session?sessionId=@Model.SessionId">
+                    <div class="col-xs-4 col-md-4">
+                        <p class="pull-left">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> @item.Component
+                        </p>
+                    </div>
+                    <div class="col-xs-4 col-md-4 text-center">
+                        <div class="progress">
+                            <div data-value="@componentName" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: (@item.Progress / 100)%">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-md-4">
+                        <p class="pull-right">
+                            <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    }*@
+
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $("#runningTime").after(moment("@Model.CreationTimestamp.ToLocalTime().ToString()").startOf("minutes").fromNow());
+    </script>
+
+    <script type="text/javascript">
+        $(function ()
+        {
+            var interval = setInterval(function ()
+            {
+                $(".progress-bar").each(function ()
+                {
+                    var name = $(this).attr("data-value");
+
+                    var self = this;
+                    var runningTime = "<span id='runningTime' class='glyphicon glyphicon-calendar' aria-hidden='true'></span> ";
+
+                    $("#runningTime").parent().html(runningTime + moment("@Model.CreationTimestamp.ToLocalTime().ToString()").startOf("minutes").fromNow());
+
+                    $.ajax("/Generation/Progress?sessionId=@Model.SessionId&component=" + name,
+                    {
+                        method: "GET",
+                        dataType: "json",
+                        cache: false,
+                        success: function (data)
+                        {
+                            var progress = ((data.Progress.Count / data.Progress.Total) * 100).toFixed(2);
+
+                            if (data.Progress.Count >= data.Progress.Total)
+                            {
+                                $(self).removeClass("active");
+
+                                progress = 100;
+
+                                if ($(".progress-bar.active").size() == 0)
+                                {
+                                    clearInterval(interval);
+                                }
+                            }
+
+                            $(self).html(progress + "%");
+                            $(self).width(progress + "%");
+                        }
+                    });
+                });
+
+            }, 750);
+        });
+
+    </script>
+}

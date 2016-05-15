@@ -13,8 +13,8 @@
  * License for the specific language governing permissions and limitations under 
  * the License.
  * 
- * User: Nityan
- * Date: 2016-3-26
+ * User: khannan
+ * Date: 2016-5-15
  */
 using MARC.HI.EHRS.SVC.Core.Services;
 using ProviderGenerator.Core.Common;
@@ -26,10 +26,12 @@ using System.Threading.Tasks;
 
 namespace ProviderGenerator.Core
 {
-	public interface IHL7v3SenderService : IUsesHostContext
+	public interface IPersistenceService : IUsesHostContext
 	{
-		IEnumerable<Provider> Send(IEnumerable<Provider> providers);
-
-		Provider Send(Provider provider);
+		/// <summary>
+		/// Saves any pending changes to the database.
+		/// </summary>
+		/// <returns>Returns true if saved successfully.</returns>
+		void Save(IPersistable model);
 	}
 }

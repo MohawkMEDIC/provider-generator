@@ -17,6 +17,7 @@
  * Date: 2016-5-15
  */
 using ProviderGenerator.Web.Models.DataModels;
+using ProviderGenerator.Web.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,12 +29,14 @@ namespace ProviderGenerator.Web.Controllers
 {
 	public class GenerationController : Controller
 	{
-		// GET: Generation
+		[HttpGet]
 		public ActionResult Index()
 		{
 			return View();
 		}
 
+		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Generate(GenerationDataModel model)
 		{
 			if (ModelState.IsValid)
@@ -41,6 +44,8 @@ namespace ProviderGenerator.Web.Controllers
 				GenerationService.GenerationServiceClient client = new GenerationService.GenerationServiceClient();
 
 				AsyncManager.OutstandingOperations.Increment();
+
+				Guid sessionId = Guid.NewGuid();
 
 				Task task = Task.Factory.StartNew(() =>
 				{
@@ -52,17 +57,32 @@ namespace ProviderGenerator.Web.Controllers
 							DateOfBirthEnd = DateTime.Now,
 							DateOfBirthStart = new DateTime(1950, 01, 01),
 							GenderDistribution = model.GenderDistribution.ToList(),
-							NumberOfRecords = model.NumberOfRecords
+							NumberOfRecords = model.NumberOfRecords,
+							SessionId = sessionId
 						}
 					});
 				});
 
-				return RedirectToAction("Session");
+				// This is not a self assignment, the first variable "sessionId" is an anonymous object variable
+				return RedirectToAction("Session", new { sessionId = sessionId });
 			}
 			else
 			{
 				return View(model);
 			}
+		}
+
+		public ActionResult Session(Guid sessionId)
+		{
+			SessionViewModel viewModel = new SessionViewModel();
+
+			//viewModel.ComponentProgressViewModels = new List<ComponentProgressViewModel>();
+			viewModel.SessionId = sessionId;
+
+
+			TempData["success"] = "Generating data";
+
+			return View(viewModel);
 		}
 	}
 }

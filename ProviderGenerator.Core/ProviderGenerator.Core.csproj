@@ -44,10 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\IPersistable.cs" />
     <Compile Include="Common\Provider.cs" />
     <Compile Include="IFhirSenderService.cs" />
     <Compile Include="IHL7v2SenderService.cs" />
     <Compile Include="IHL7v3SenderService.cs" />
+    <Compile Include="IPersistenceService.cs" />
     <Compile Include="IRandomizerService.cs" />
     <Compile Include="ModelMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

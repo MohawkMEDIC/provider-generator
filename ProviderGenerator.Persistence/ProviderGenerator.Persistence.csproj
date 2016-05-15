@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ProviderGenerator.Persistence</RootNamespace>
     <AssemblyName>ProviderGenerator.Persistence</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,12 +55,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DAL\ApplicationDbContext.cs" />
+    <Compile Include="DAL\EntityRepository.cs" />
+    <Compile Include="DAL\EntityUnitOfWork.cs" />
+    <Compile Include="DAL\IRepository.cs" />
+    <Compile Include="DAL\IUnitOfWork.cs" />
+    <Compile Include="Models\Provider.cs" />
+    <Compile Include="Models\Session.cs" />
+    <Compile Include="PersistenceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="ProviderGenerator.Persistence.licenseheader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProviderGenerator.Core\ProviderGenerator.Core.csproj">
+      <Project>{c0c90b48-fc3d-4488-8659-079c0c89a047}</Project>
+      <Name>ProviderGenerator.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

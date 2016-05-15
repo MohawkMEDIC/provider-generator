@@ -37,6 +37,7 @@ namespace ProviderGenerator.Messaging.MessageReceiver
 		private HostContext context;
 
 		private IHL7v3SenderService hl7v3SenderService;
+		private IPersistenceService persistenceService;
 		private IRandomizerService randomizerService;
 
 		/// <summary>
@@ -48,6 +49,7 @@ namespace ProviderGenerator.Messaging.MessageReceiver
 			ApplicationContext.Context = context;
 
 			hl7v3SenderService = context.GetService(typeof(IHL7v3SenderService)) as IHL7v3SenderService;
+			persistenceService = context.GetService(typeof(IPersistenceService)) as IPersistenceService;
 			randomizerService = context.GetService(typeof(IRandomizerService)) as IRandomizerService;
 		}
 
@@ -64,7 +66,19 @@ namespace ProviderGenerator.Messaging.MessageReceiver
 				providers.Add(randomizerService.GetRandomProvider());
 			}
 
-			hl7v3SenderService.Send(providers);
+			var sentProviders = hl7v3SenderService?.Send(providers);
+
+			ProviderGenerator.Persistence.Models.Session session = new Persistence.Models.Session
+			{
+				CreationTimestamp = DateTime.UtcNow,
+				SessionId = request.SessionId
+			};
+
+			foreach (var provider in sentProviders)
+			{
+				session.Providers.Add(new ProviderGenerator.Persistence.Models.Provider().Map(provider));
+				persistenceService?.Save(session);
+			}
 
 			return response;
 		}

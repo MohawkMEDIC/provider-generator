@@ -13,23 +13,50 @@
  * License for the specific language governing permissions and limitations under 
  * the License.
  * 
- * User: Nityan
- * Date: 2016-3-26
+ * User: khannan
+ * Date: 2016-5-15
  */
-using MARC.HI.EHRS.SVC.Core.Services;
 using ProviderGenerator.Core.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProviderGenerator.Core
+namespace ProviderGenerator.Persistence.Models
 {
-	public interface IHL7v3SenderService : IUsesHostContext
+	[Table("Session")]
+	public class Session : IPersistable
 	{
-		IEnumerable<Provider> Send(IEnumerable<Provider> providers);
+		public Session()
+		{
+			Providers = new List<Provider>();
+		}
 
-		Provider Send(Provider provider);
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public int Id { get; set; }
+
+		[NotMapped]
+		public Type ComponentType
+		{
+			get
+			{
+				return typeof(Session);
+			}
+		}
+
+		[Required]
+		public DateTime CreationTimestamp { get; set; }
+
+		[Required]
+		[Index(IsUnique = true)]
+		public Guid SessionId { get; set; }
+
+		public virtual ICollection<Provider> Providers { get; set; }
+
+
 	}
 }

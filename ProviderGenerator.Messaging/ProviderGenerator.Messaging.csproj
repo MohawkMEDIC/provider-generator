@@ -62,6 +62,10 @@
       <Project>{c0c90b48-fc3d-4488-8659-079c0c89a047}</Project>
       <Name>ProviderGenerator.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ProviderGenerator.Persistence\ProviderGenerator.Persistence.csproj">
+      <Project>{576dbe1e-ed94-4ecf-8378-fcd1fc647765}</Project>
+      <Name>ProviderGenerator.Persistence</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -28,6 +28,7 @@ namespace ProviderGenerator.HL7v3
 {
 	public class HL7v3SenderService : IHL7v3SenderService
 	{
+		private IPersistenceService persistenceService;
 		private IServiceProvider context;
 
 		public IServiceProvider Context
@@ -39,23 +40,45 @@ namespace ProviderGenerator.HL7v3
 			set
 			{
 				this.context = value;
+				this.persistenceService = this.context.GetService(typeof(IPersistenceService)) as IPersistenceService;
 			}
 		}
 
 		#region IHL7v3SenderService Members
 
-		public void Send(IEnumerable<Provider> providers)
+		public IEnumerable<Provider> Send(IEnumerable<Provider> providers)
 		{
+			List<Provider> providersToReturn = new List<Provider>();
+
 			foreach (var provider in providers)
 			{
 				var graphable = EverestUtil.GenerateAddProviderRequest(provider);
 
-				EverestUtil.Sendv3Messages(graphable, "pr");
+				bool result = EverestUtil.Sendv3Messages(graphable, "pr");
+
+				if (result)
+				{
+					providersToReturn.Add(provider);
+				}
 			}
+
+			return providersToReturn;
 		}
 
-		public void Send(Provider provider)
+		public Provider Send(Provider provider)
 		{
+			var graphable = EverestUtil.GenerateAddProviderRequest(provider);
+
+			bool result = EverestUtil.Sendv3Messages(graphable, "pr");
+
+			if (result)
+			{
+				return provider;
+			}
+			else
+			{
+				return null;
+			}
 		}
 
 		#endregion

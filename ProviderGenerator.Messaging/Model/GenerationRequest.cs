@@ -29,5 +29,9 @@ namespace ProviderGenerator.Messaging.Model
 
 		[DataMember(IsRequired = true)]
 		public int NumberOfRecords { get; set; }
+
+		[DataMember(IsRequired = true)]
+		public Guid SessionId { get; set; }
+
 	}
 }

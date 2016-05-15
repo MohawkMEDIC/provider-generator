@@ -13,23 +13,31 @@
  * License for the specific language governing permissions and limitations under 
  * the License.
  * 
- * User: Nityan
- * Date: 2016-3-26
+ * User: khannan
+ * Date: 2016-5-15
  */
-using MARC.HI.EHRS.SVC.Core.Services;
-using ProviderGenerator.Core.Common;
+using ProviderGenerator.Persistence.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProviderGenerator.Core
+namespace ProviderGenerator.Persistence.DAL
 {
-	public interface IHL7v3SenderService : IUsesHostContext
+	public interface IUnitOfWork : IDisposable
 	{
-		IEnumerable<Provider> Send(IEnumerable<Provider> providers);
+		#region Repositories
 
-		Provider Send(Provider provider);
+		IRepository<Provider> ProviderRepository { get; }
+
+		IRepository<Session> SessionRepository { get; }
+
+		#endregion
+
+		/// <summary>
+		/// Save any pending changes to the database.
+		/// </summary>
+		void Save();
 	}
 }

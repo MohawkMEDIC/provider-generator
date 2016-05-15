@@ -13,23 +13,25 @@
  * License for the specific language governing permissions and limitations under 
  * the License.
  * 
- * User: Nityan
- * Date: 2016-3-26
+ * User: khannan
+ * Date: 2016-5-15
  */
-using MARC.HI.EHRS.SVC.Core.Services;
-using ProviderGenerator.Core.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProviderGenerator.Core
+namespace ProviderGenerator.Core.Common
 {
-	public interface IHL7v3SenderService : IUsesHostContext
+	/// <summary>
+	/// Represents a persistable component.
+	/// </summary>
+	public interface IPersistable
 	{
-		IEnumerable<Provider> Send(IEnumerable<Provider> providers);
-
-		Provider Send(Provider provider);
+		/// <summary>
+		/// The type that this persistable component represents.
+		/// </summary>
+		Type ComponentType { get; }
 	}
 }

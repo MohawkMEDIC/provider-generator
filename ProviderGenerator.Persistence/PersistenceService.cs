@@ -16,6 +16,9 @@
  * User: khannan
  * Date: 2016-5-15
  */
+using ProviderGenerator.Core;
+using ProviderGenerator.Persistence.DAL;
+using ProviderGenerator.Persistence.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +27,41 @@ using System.Threading.Tasks;
 
 namespace ProviderGenerator.Persistence
 {
-    public class Class1
-    {
-    }
+	public class PersistenceService : IPersistenceService
+	{
+		private IServiceProvider context;
+		private IUnitOfWork unitOfWork;
+
+		public PersistenceService()
+		{
+			this.unitOfWork = new EntityUnitOfWork(new ApplicationDbContext());
+		}
+
+		public IServiceProvider Context
+		{
+			get
+			{
+				return this.context;
+			}
+			set
+			{
+				this.context = value;
+			}
+		}
+
+		public void Save(Core.Common.IPersistable model)
+		{
+			// HACK
+			if (model.ComponentType == typeof(Session))
+			{
+				unitOfWork.SessionRepository.Add(model as Session);
+			}
+			else if (model.ComponentType == typeof(Provider))
+			{
+				unitOfWork.ProviderRepository.Add(model as Provider);
+			}
+
+			unitOfWork.Save();
+		}
+	}
 }
