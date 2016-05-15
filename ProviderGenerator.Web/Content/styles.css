@@ -1,0 +1,295 @@
+/*
+ * Layout (General) CSS
+ */
+
+
+body {
+	font-family: "Open Sans", sans-serif;
+}
+
+.form-horizontal {
+    margin: 0 1em 2em 1em;
+}
+
+span.glyphicon {
+	margin-right: 5px;
+}
+
+
+
+/*
+ * Top Navigation CSS
+ */
+
+.navigation   {
+    background-color: #428bca;
+}
+
+.navigation a {
+    padding: 15px !important;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navigation a:hover, .navigation a:active  {
+     color: #2d558c;
+     text-shadow: none;
+}
+
+a.logo   {
+    display: inline-block;
+    font-weight: 600;
+    text-shadow: #3e3e3e 1px 0px 2px;
+}
+
+a.settings {
+    font-weight: 600;
+    color: #2d558c;
+    background-color: #428bca !important;
+}
+
+a.settings:hover {
+    color: #fff;
+    text-shadow: #3e3e3e 0px 0px 2px;
+}
+
+
+
+/*
+ * Main Content CSS
+ */
+
+.panel-heading {
+	padding: 15px;
+	height: 50px;
+}
+
+.panel-body {
+	background-color: #316895;
+	color: #fff;
+}
+
+.panel a {
+	font-weight: 600;
+	text-decoration: none;
+	font-size: 0.9em;
+	color: #316895;
+}
+
+div#header {
+	margin-bottom: 20px;
+    margin-top: 100px;
+}
+
+div#home .jumbotron {
+    margin-top: 100px;
+}
+
+div.panel-heading > a.row {
+    display: block;
+}
+
+
+/*
+    History
+*/
+
+div#history div#header {
+	margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+div#history .panel-body {
+	background-color: #ebf6ff;
+    color: #333;
+}
+
+/*
+    Login
+*/
+div#login {
+    margin-top: 85px;
+}
+
+div#login .panel {
+    background-color: #ffffff;
+    color: #333;
+}
+
+div#login .panel .panel-default {
+    border: none;
+}
+
+div#login .panel-body {
+    color: #333;
+}
+
+/*
+ * Sidebar CSS
+ */
+
+.sidebar {
+	display: none; /* Initially Hide for mobile, show later using media queries */
+}
+@media (min-width: 768px) {
+	.sidebar {
+		position: fixed;
+		top: 51px;
+		bottom: 0;
+		left: 0;
+		z-index: 1000;
+		display: block;
+		padding: 20px;
+		overflow-x: hidden;
+		overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+		background-color: #316895;
+		color: #fff;
+		border-right: 1px solid #eee;
+	}
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+	margin-right: -21px; /* 20px padding + 1px border */
+	margin-bottom: 20px;
+	margin-left: -20px;
+}
+.nav-sidebar > li > a {
+	padding-right: 20px;
+	padding-left: 20px;
+	color: #fff;
+	font-size: 0.9em;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+	color: #fff;
+	background-color: #28567c;
+}
+
+
+/*
+ * Dashboard CSS
+ */
+
+div#dashboard li {
+	line-height: 2em;
+}
+
+div#dashboard #pie {
+	text-align: center;
+}
+
+
+div#dashboard input.range {
+   -webkit-appearance: none;
+   width: 85%;
+   height: 5px;
+   border-radius: 5px;
+   background: #ccc;
+   outline: none;
+	display: inline;
+}
+
+div#dashboard input.range::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #353535;
+	cursor: pointer;
+	-webkit-transition: background .15s ease-in-out;
+	transition: background .15s ease-in-out;
+}
+
+div#dashboard input.range::-webkit-slider-thumb:hover {
+	background: #e06161;
+}
+
+div#dashboard input.range::-webkit-slider-thumb:active {
+	background: #e06161;
+}
+
+div#dashboard input.range::-moz-range-thumb {
+	width: 20px;
+	height: 20px;
+	border: 0;
+	border-radius: 50%;
+	background: #353535;
+	cursor: pointer;
+	-webkit-transition: background .15s ease-in-out;
+	transition: background .15s ease-in-out;
+}
+
+div#dashboard input.range::-moz-range-thumb:hover {
+	background: #e06161;
+}
+
+div#dashboard input.range::-moz-range-thumb:active {
+	background: #e06161;
+}
+
+div#dashboard .show-slider {
+	line-height: 2em;
+	float: right;
+}
+
+div#dashboard .check-ins {
+	-webkit-animation: slideBounce 0.7s;
+    -moz-animation: slideBounce 0.7s;
+    animation: slideBounce 0.7s;
+	position: relative;
+}
+
+@-webkit-keyframes slideBounce {
+  0%	{ transform:translateX(-1000%); }
+  5%	{ transform:translateX(-1000%); }
+  50%	{ transform:translateX(0); }
+  75%	{ transform:translateX(-25%); }
+  100%	{ transform:translateX(0); }
+}
+
+@-moz-keyframes slideBounce {
+  0%	{ transform:translateX(-1000%); }
+  5%	{ transform:translateX(-1000%); }
+  50%	{ transform:translateX(0); }
+  75%	{ transform:translateX(-25%); }
+  100%	{ transform:translateX(0); }
+}
+
+@keyframes slideBounce {
+  0%	{ transform:translateX(-1000%); }
+  5%	{ transform:translateX(-1000%); }
+  50%	{ transform:translateX(0); }
+  75%	{ transform:translateX(-25%); }
+  100%	{ transform:translateX(0); }
+}
+
+
+
+
+/*
+ * Session Data
+ */
+
+div#data .panel-body {
+	background-color: #ebf6ff;
+    color: #333;
+}
+
+.panel-heading.page-title {
+	color: #316895;
+}
+
+.panel-heading.page-title a {
+	font-weight: 600;
+	text-decoration: none;
+}
+
+div#data .panel-body table td {
+	text-align: center;
+}
+
+div#data .panel-body table th {
+	text-align: center;
+}
