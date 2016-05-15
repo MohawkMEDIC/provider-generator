@@ -215,7 +215,7 @@ namespace ProviderGenerator.HL7v3
 										Id = new II
 										{
 											Displayable = true,
-											; ; Extension = Guid.NewGuid().ToString(),
+											Extension = Guid.NewGuid().ToString(),
 											Root = Guid.NewGuid().ToString()
 										},
 										LanguageCommunication = new List<MARC.Everest.RMIM.CA.R020402.PRPM_MT303010CA.LanguageCommunication>
