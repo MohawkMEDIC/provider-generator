@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a79a6c89-ea1e-4453-84b9-459c98a8cd3c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>true</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8000/providergenerator?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="providergenerator.xsd" MetadataType="Schema" ID="8cf43c73-199f-4d40-9c29-a53ea68c3852" SourceId="1" SourceUrl="http://localhost:8000/providergenerator?xsd=xsd1" />
+    <MetadataFile FileName="providergenerator.wsdl" MetadataType="Wsdl" ID="156f5f56-8bf1-46d8-ba9b-62377cdf8368" SourceId="1" SourceUrl="http://localhost:8000/providergenerator?wsdl=wsdl0" />
+    <MetadataFile FileName="providergenerator1.xsd" MetadataType="Schema" ID="a52624d4-e13f-4dca-b7d7-6319e5b903d3" SourceId="1" SourceUrl="http://localhost:8000/providergenerator?xsd=xsd0" />
+    <MetadataFile FileName="GenerationService.wsdl" MetadataType="Wsdl" ID="b051504c-543a-4269-ae02-8037f700acf6" SourceId="1" SourceUrl="http://localhost:8000/providergenerator?wsdl" />
+    <MetadataFile FileName="providergenerator2.xsd" MetadataType="Schema" ID="5c43204d-5bcf-4696-8e05-b0c07f6e5d20" SourceId="1" SourceUrl="http://localhost:8000/providergenerator?xsd=xsd2" />
+    <MetadataFile FileName="providergenerator3.xsd" MetadataType="Schema" ID="db3d285b-d09d-4491-8c17-fdcb7cd3d052" SourceId="1" SourceUrl="http://localhost:8000/providergenerator?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

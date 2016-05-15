@@ -1,0 +1,151 @@
+﻿@model ProviderGenerator.Web.Models.DataModels.GenerationDataModel
+@{
+    ViewBag.Title = "Generate Data";
+
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "generation-progress"
+    };
+}
+
+<div id="dashboard" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    @using (Ajax.BeginForm("Generate", "Generation", null, options, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <!-- Header -->
+        <div id="header">
+            <h3 class="text-left">
+                &nbsp;
+                <button id="run" class="btn btn-primary btn-sm pull-right" type="submit">Run »</button>
+            </h3>
+        </div>
+
+        <!-- Components -->
+        <div class="check-in panel panel-default">
+            <div class="panel-heading" role="button" data-toggle="collapse" href="#components" aria-expanded="false" aria-controls="components">
+                <a class="pull-left">
+                    <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Components
+                </a>
+                <a class="pull-right" role="button" data-toggle="collapse" href="#components" aria-expanded="false" aria-controls="components">
+                    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="collapse" id="components">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            <label class="checkbox-inline">
+                                @Html.CheckBoxFor(m => m.ClientRegistry, new { id = "ClientRegistry", name = "ClientRegistry" })
+                                @Html.DisplayNameFor(m => m.ClientRegistry)
+                            </label>
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            <label class="checkbox-inline">
+                                @Html.CheckBoxFor(m => m.HNS, new { id = "HNS", name = "HNS" })
+                                @Html.DisplayNameFor(m => m.HNS)
+                            </label>
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            <label class="checkbox-inline">
+                                @Html.CheckBoxFor(m => m.OLIS, new { id = "OLIS", name = "OLIS" })
+                                @Html.DisplayNameFor(m => m.OLIS)
+                            </label>
+                        </div>
+                        <div class="col-xs-6 col-md-3">
+                            <label class="checkbox-inline">
+                                @Html.CheckBoxFor(m => m.ProviderRegistry, new { id = "ProviderRegistry", name = "ProviderRegistry" })
+                                @Html.DisplayNameFor(m => m.ProviderRegistry)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- End Components -->
+    <!-- Providers -->
+        <div class="check-in panel panel-default">
+            <div class="panel-heading" role="button" data-toggle="collapse" href="#providers" aria-expanded="false" aria-controls="providers">
+                <a class="pull-left">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Providers
+                </a>
+                <a class="pull-right" role="button" data-toggle="collapse" href="#providers" aria-expanded="false" aria-controls="providers">
+                    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="collapse" id="providers">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-4">
+                            @Html.LabelFor(m => m.NumberOfRecords)
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.NumberOfRecords, new { @class = "form-control", name = "ProvidersCount", id = "ProvidersCount", placeholder = 100 })
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            &nbsp;
+                        </div>
+                        <div class="col-xs-12 col-md-12">
+                            <hr />
+                        </div>
+                    </div>
+
+                    <div class="row" id="ProviderAgeDistribution">
+                        <div class="col-xs-12 col-md-12">
+                            <label>@Html.LabelFor(m => m.AgeDistribution)</label>
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            <ul class="list-unstyled">
+                                <li>25 yrs - 34 yrs</li>
+                                <li>35 yrs - 65 yrs</li>
+                                <li>65+ yrs</li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            <ul class="list-unstyled" id="rangebox">
+                                <li>@Html.HiddenFor(m => m.AgeDistribution, new { name = "ProviderAges" })<input type="range" data-id="New" class="range range-cluster" step="1" min="0" max="100" data-val=""><span class="show-slider"></span></li>
+                                <li>@Html.HiddenFor(m => m.AgeDistribution, new { name = "ProviderAges" })<input type="range" data-id="Experienced" class="range range-cluster" step="1" min="0" max="100" data-val=""><span class="show-slider"></span></li>
+                                <li>@Html.HiddenFor(m => m.AgeDistribution, new { name = "ProviderAges" })<input type="range" data-id="Veterans" class="range range-cluster" step="1" min="0" max="100" data-val=""><span class="show-slider"></span></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            <div id="pie" display="hidden"></div>
+                        </div>
+                        <div class="col-xs-12 col-md-12">
+                            <hr />
+                        </div>
+                    </div>
+
+                    <div class="row" id="ProviderGenderDistribution">
+                        <div class="col-xs-12 col-md-12">
+                            <label>@Html.LabelFor(m => m.GenderDistribution)</label>
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            <ul class="list-unstyled">
+                                <li>Male</li>
+                                <li>Female</li>
+                                <li>Other</li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            <ul class="list-unstyled" id="rangebox">
+                                <li>@Html.HiddenFor(m => m.GenderDistribution, new { name = "ProviderGenders" })<input type="range" data-id="Male" class="range range-cluster" step="1" min="0" max="100" data-val=""><span class="show-slider"></span></li>
+                                <li>@Html.HiddenFor(m => m.GenderDistribution, new { name = "ProviderGenders" })<input type="range" data-id="Female" class="range range-cluster" step="1" min="0" max="100" data-val=""><span class="show-slider"></span></li>
+                                <li>@Html.HiddenFor(m => m.GenderDistribution, new { name = "ProviderGenders" })<input type="range" data-id="Other" class="range range-cluster" step="1" min="0" max="100" data-val=""><span class="show-slider"></span></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            <div id="pie" display="hidden"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- End Providers -->
+    }
+</div>
