@@ -53,13 +53,13 @@ namespace ProviderGenerator.Messaging.MessageReceiver
 
 		#region IGenerationService Members
 
-		public GenerationResponse GenerateProviders(int count)
+		public GenerationResponse GenerateProviders(GenerationRequest request)
 		{
 			GenerationResponse response = new GenerationResponse();
 
 			List<Provider> providers = new List<Provider>();
 
-			for (int i = 0; i < count; i++)
+			for (int i = 0; i < request.NumberOfRecords; i++)
 			{
 				providers.Add(randomizerService.GetRandomProvider());
 			}
@@ -72,8 +72,6 @@ namespace ProviderGenerator.Messaging.MessageReceiver
 		public async Task<GenerationResponse> GenerateProvidersAsync(int count)
 		{
 			GenerationResponse response = new GenerationResponse();
-
-
 
 			return response;
 		}

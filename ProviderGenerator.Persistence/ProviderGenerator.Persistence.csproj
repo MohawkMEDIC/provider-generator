@@ -4,18 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3A717904-401B-408B-BC3D-B46A8DC510D9}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{576DBE1E-ED94-4ECF-8378-FCD1FC647765}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProviderGenerator</RootNamespace>
-    <AssemblyName>ProviderGenerator</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <RootNamespace>ProviderGenerator.Persistence</RootNamespace>
+    <AssemblyName>ProviderGenerator.Persistence</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,16 +22,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -48,9 +41,6 @@
     <Reference Include="MARC.HI.EHRS.SVC.Core">
       <HintPath>..\Solution Items\MARC.HI.EHRS.SVC.Core.dll</HintPath>
     </Reference>
-    <Reference Include="MohawkCollege.Util.Console.Parameters">
-      <HintPath>..\Solution Items\MohawkCollege.Util.Console.Parameters.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -59,42 +49,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleParameters.cs" />
-    <Compile Include="ProviderGenerator.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ProviderGenerator.Designer.cs">
-      <DependentUpon>ProviderGenerator.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="ProviderGenerator.licenseheader" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ProviderGenerator.Core\ProviderGenerator.Core.csproj">
-      <Project>{c0c90b48-fc3d-4488-8659-079c0c89a047}</Project>
-      <Name>ProviderGenerator.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProviderGenerator.HL7v3\ProviderGenerator.HL7v3.csproj">
-      <Project>{9b894fad-b111-4aea-96f8-4d8fd13dc26f}</Project>
-      <Name>ProviderGenerator.HL7v3</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProviderGenerator.Messaging\ProviderGenerator.Messaging.csproj">
-      <Project>{7b68ed20-d0be-4fd6-b5ca-9d86f5e33e71}</Project>
-      <Name>ProviderGenerator.Messaging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ProviderGenerator.Randomizer\ProviderGenerator.Randomizer.csproj">
-      <Project>{1a16de8f-31b7-4e5f-b8ed-09bb5bf7704d}</Project>
-      <Name>ProviderGenerator.Randomizer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

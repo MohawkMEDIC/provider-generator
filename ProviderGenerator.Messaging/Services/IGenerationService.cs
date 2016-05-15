@@ -30,6 +30,6 @@ namespace ProviderGenerator.Messaging.Services
 	public interface IGenerationService
 	{
 		[OperationContract(Name = "GenerateProviders", Action = "GenerateProviders")]
-		GenerationResponse GenerateProviders(int count);
+		GenerationResponse GenerateProviders(GenerationRequest request);
 	}
 }

@@ -15,6 +15,110 @@ namespace ProviderGenerator.Web.GenerationService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GenerationRequest", Namespace="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model")]
+    [System.SerializableAttribute()]
+    public partial class GenerationRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Collections.Generic.List<double> AgeDistributionField;
+        
+        private System.DateTime DateOfBirthEndField;
+        
+        private System.DateTime DateOfBirthStartField;
+        
+        private System.Collections.Generic.List<double> GenderDistributionField;
+        
+        private int NumberOfRecordsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Collections.Generic.List<double> AgeDistribution {
+            get {
+                return this.AgeDistributionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AgeDistributionField, value) != true)) {
+                    this.AgeDistributionField = value;
+                    this.RaisePropertyChanged("AgeDistribution");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.DateTime DateOfBirthEnd {
+            get {
+                return this.DateOfBirthEndField;
+            }
+            set {
+                if ((this.DateOfBirthEndField.Equals(value) != true)) {
+                    this.DateOfBirthEndField = value;
+                    this.RaisePropertyChanged("DateOfBirthEnd");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.DateTime DateOfBirthStart {
+            get {
+                return this.DateOfBirthStartField;
+            }
+            set {
+                if ((this.DateOfBirthStartField.Equals(value) != true)) {
+                    this.DateOfBirthStartField = value;
+                    this.RaisePropertyChanged("DateOfBirthStart");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Collections.Generic.List<double> GenderDistribution {
+            get {
+                return this.GenderDistributionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GenderDistributionField, value) != true)) {
+                    this.GenderDistributionField = value;
+                    this.RaisePropertyChanged("GenderDistribution");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int NumberOfRecords {
+            get {
+                return this.NumberOfRecordsField;
+            }
+            set {
+                if ((this.NumberOfRecordsField.Equals(value) != true)) {
+                    this.NumberOfRecordsField = value;
+                    this.RaisePropertyChanged("NumberOfRecords");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="GenerationResponse", Namespace="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model")]
     [System.SerializableAttribute()]
     public partial class GenerationResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -88,13 +192,13 @@ namespace ProviderGenerator.Web.GenerationService {
     public partial class GenerateProvidersRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://marc-hi.ca/xmlns/patgensvc", Order=0)]
-        public int count;
+        public ProviderGenerator.Web.GenerationService.GenerationRequest request;
         
         public GenerateProvidersRequest() {
         }
         
-        public GenerateProvidersRequest(int count) {
-            this.count = count;
+        public GenerateProvidersRequest(ProviderGenerator.Web.GenerationService.GenerationRequest request) {
+            this.request = request;
         }
     }
     
