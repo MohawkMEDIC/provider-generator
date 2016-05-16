@@ -4,11 +4,11 @@
   <xs:import schemaLocation="http://localhost:8000/providergenerator?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="GenerationRequest">
     <xs:sequence>
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="AgeDistribution" nillable="true" type="q1:ArrayOfdouble" />
-      <xs:element name="DateOfBirthEnd" type="xs:dateTime" />
-      <xs:element name="DateOfBirthStart" type="xs:dateTime" />
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="GenderDistribution" nillable="true" type="q2:ArrayOfdouble" />
-      <xs:element name="NumberOfRecords" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AgeDistribution" nillable="true" type="q1:ArrayOfdouble" />
+      <xs:element minOccurs="0" name="DateOfBirthEnd" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateOfBirthStart" type="xs:dateTime" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GenderDistribution" nillable="true" type="q2:ArrayOfdouble" />
+      <xs:element minOccurs="0" name="NumberOfRecords" type="xs:int" />
       <xs:element name="SessionId" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>

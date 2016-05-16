@@ -38,10 +38,10 @@ namespace ProviderGenerator.Persistence.DAL
 			modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 		}
 
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
+		public static ApplicationDbContext Create()
+		{
+			return new ApplicationDbContext();
+		}
 
 		public DbSet<Provider> Providers { get; set; }
 

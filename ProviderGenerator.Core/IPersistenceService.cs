@@ -29,6 +29,13 @@ namespace ProviderGenerator.Core
 	public interface IPersistenceService : IUsesHostContext
 	{
 		/// <summary>
+		/// Gets a list of providers for a given session id.
+		/// </summary>
+		/// <param name="sessionId">The id of the session.</param>
+		/// <returns>Returns a list of providers generated with the given session id.</returns>
+		IEnumerable<Provider> GetProviders(Guid sessionId);
+
+		/// <summary>
 		/// Saves any pending changes to the database.
 		/// </summary>
 		/// <returns>Returns true if saved successfully.</returns>

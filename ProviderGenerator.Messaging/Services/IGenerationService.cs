@@ -16,7 +16,10 @@
  * User: Nityan
  * Date: 2016-3-26
  */
+using ProviderGenerator.Core.Common;
 using ProviderGenerator.Messaging.Model;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ServiceModel;
 using System.Threading.Tasks;

@@ -22,14 +22,19 @@ namespace ProviderGenerator.Web.GenerationService {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Generic.List<double> AgeDistributionField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime DateOfBirthEndField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime DateOfBirthStartField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Generic.List<double> GenderDistributionField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int NumberOfRecordsField;
         
         private System.Guid SessionIdField;
@@ -44,7 +49,7 @@ namespace ProviderGenerator.Web.GenerationService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Collections.Generic.List<double> AgeDistribution {
             get {
                 return this.AgeDistributionField;
@@ -57,7 +62,7 @@ namespace ProviderGenerator.Web.GenerationService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime DateOfBirthEnd {
             get {
                 return this.DateOfBirthEndField;
@@ -70,7 +75,7 @@ namespace ProviderGenerator.Web.GenerationService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime DateOfBirthStart {
             get {
                 return this.DateOfBirthStartField;
@@ -83,7 +88,7 @@ namespace ProviderGenerator.Web.GenerationService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Collections.Generic.List<double> GenderDistribution {
             get {
                 return this.GenderDistributionField;
@@ -96,7 +101,7 @@ namespace ProviderGenerator.Web.GenerationService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int NumberOfRecords {
             get {
                 return this.NumberOfRecordsField;

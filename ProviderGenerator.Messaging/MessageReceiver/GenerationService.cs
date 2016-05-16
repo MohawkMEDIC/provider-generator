@@ -16,6 +16,7 @@
  * User: Nityan
  * Date: 2016-3-26
  */
+using DevTrends.WCFDataAnnotations;
 using MARC.HI.EHRS.SVC.Core;
 using ProviderGenerator.Core;
 using ProviderGenerator.Core.Common;
@@ -32,6 +33,7 @@ namespace ProviderGenerator.Messaging.MessageReceiver
 	/// <summary>
 	/// Provides operations to generate providers.
 	/// </summary>
+	[ValidateDataAnnotationsBehavior]
 	public class GenerationService : IGenerationService, IDisposable
 	{
 		private HostContext context;
@@ -77,15 +79,9 @@ namespace ProviderGenerator.Messaging.MessageReceiver
 			foreach (var provider in sentProviders)
 			{
 				session.Providers.Add(new ProviderGenerator.Persistence.Models.Provider().Map(provider));
-				persistenceService?.Save(session);
 			}
 
-			return response;
-		}
-
-		public async Task<GenerationResponse> GenerateProvidersAsync(int count)
-		{
-			GenerationResponse response = new GenerationResponse();
+			persistenceService?.Save(session);
 
 			return response;
 		}

@@ -18,22 +18,25 @@
  */
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ProviderGenerator.Web.Models.ViewModels
 {
-	public class SessionViewModel
+	public class ProviderViewModel
 	{
-		public SessionViewModel()
+		public ProviderViewModel()
 		{
+
 		}
 
-		public DateTime CreationTimestamp { get; set; }
+		public string Address { get; set; }
 
-		public List<ProviderViewModel> ProviderViewModels { get; set; }
+		public string Name { get; set; }
 
-		public Guid SessionId { get; set; }
+		[Display(Name = "Practitioner No.")]
+		public string PractitionerNo { get; set; }
 	}
 }

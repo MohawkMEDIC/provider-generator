@@ -49,6 +49,24 @@ namespace ProviderGenerator.Persistence
 			}
 		}
 
+		/// <summary>
+		/// Gets a list of providers for a given session id.
+		/// </summary>
+		/// <param name="sessionId">The id of the session.</param>
+		/// <returns>Returns a list of providers generated with the given session id.</returns>
+		public IEnumerable<Core.Common.Provider> GetProviders(Guid sessionId)
+		{
+			IEnumerable<Core.Common.Provider> providers = new List<Core.Common.Provider>();
+
+			providers = unitOfWork.ProviderRepository.Get(x => x.Session.SessionId == sessionId).AsEnumerable().Select(x => this.GenerateProviderModel(x));
+
+			return providers;
+		}
+
+		/// <summary>
+		/// Saves any pending changes to the database.
+		/// </summary>
+		/// <returns>Returns true if saved successfully.</returns>
 		public void Save(Core.Common.IPersistable model)
 		{
 			// HACK
@@ -62,6 +80,15 @@ namespace ProviderGenerator.Persistence
 			}
 
 			unitOfWork.Save();
+		}
+
+		private Core.Common.Provider GenerateProviderModel(Provider prov)
+		{
+			Core.Common.Provider provider = new Core.Common.Provider();
+
+			provider.Map(prov);
+
+			return provider;
 		}
 	}
 }

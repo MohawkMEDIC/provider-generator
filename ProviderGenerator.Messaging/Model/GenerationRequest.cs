@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -15,19 +16,24 @@ namespace ProviderGenerator.Messaging.Model
 
 		}
 
-		[DataMember(IsRequired = true)]
+		[Required]
+		[DataMember]
 		public DateTime DateOfBirthStart { get; set; }
 
-		[DataMember(IsRequired = true)]
+		[Required]
+		[DataMember]
 		public DateTime DateOfBirthEnd { get; set; }
 
-		[DataMember(IsRequired = true)]
+		[Required]
+		[DataMember]
 		public double[] AgeDistribution { get; set; }
 
-		[DataMember(IsRequired = true)]
+		[Required]
+		[DataMember]
 		public double[] GenderDistribution { get; set; }
 
-		[DataMember(IsRequired = true)]
+		[Required]
+		[DataMember]
 		public int NumberOfRecords { get; set; }
 
 		[DataMember(IsRequired = true)]

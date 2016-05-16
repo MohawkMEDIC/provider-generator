@@ -16,6 +16,7 @@
  * User: khannan
  * Date: 2016-5-15
  */
+using ProviderGenerator.Web.Models;
 using ProviderGenerator.Web.Models.DataModels;
 using ProviderGenerator.Web.Models.ViewModels;
 using System;
@@ -76,9 +77,7 @@ namespace ProviderGenerator.Web.Controllers
 		{
 			SessionViewModel viewModel = new SessionViewModel();
 
-			//viewModel.ComponentProgressViewModels = new List<ComponentProgressViewModel>();
 			viewModel.SessionId = sessionId;
-
 
 			TempData["success"] = "Generating data";
 

@@ -22,18 +22,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProviderGenerator.Web.Models.ViewModels
+namespace ProviderGenerator.Persistence.Models
 {
-	public class SessionViewModel
+	public enum EndpointType
 	{
-		public SessionViewModel()
-		{
-		}
-
-		public DateTime CreationTimestamp { get; set; }
-
-		public List<ProviderViewModel> ProviderViewModels { get; set; }
-
-		public Guid SessionId { get; set; }
+		Fhir,
+		Hl7v2,
+		Hl7v3
 	}
 }
