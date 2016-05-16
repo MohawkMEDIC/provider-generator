@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-xs-4 col-md-4 text-center">
                     <div class="progress">
-                        <div data-value="Provider" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: ((@Model.Count + @Model.Total) * 100)%">
+                        <div data-value="Provider" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
                         </div>
                     </div>
                 </div>
@@ -45,19 +45,13 @@
                 <thead>
                     <tr>
                         <th>
-                            UPI
-                        </th>
-                        <th>
                             Name
                         </th>
                         <th>
                             Address
                         </th>
                         <th>
-                            Organization
-                        </th>
-                        <th>
-                            Organization UPI
+                            Practitioner No.
                         </th>
                     </tr>
                 </thead>
@@ -65,11 +59,9 @@
                     @foreach (var item in Model.ProviderViewModels)
                     {
                         <tr>
-                            <td>@item.Upi</td>
                             <td>@item.Name</td>
                             <td>@item.Address</td>
-                            <td>@item.OrganizationName</td>
-                            <td>@item.OrganizationUpi</td>
+                            <td>@item.PractitionerNo</td>
                         </tr>}
                 </tbody>
             </table>
@@ -81,50 +73,5 @@
 
     <script type="text/javascript">
         $("#runningTime").after(moment("@Model.CreationTimestamp.ToLocalTime().ToString()").startOf("minutes").fromNow());
-    </script>
-    <script type="text/javascript">
-        $(function ()
-        {
-            var interval = setInterval(function ()
-            {
-                $(".progress-bar").each(function ()
-                {
-                    var name = $(this).attr("data-value");
-
-                    var self = this;
-                    var runningTime = "<span id='runningTime' class='glyphicon glyphicon-calendar' aria-hidden='true'></span> ";
-
-                    $("#runningTime").parent().html(runningTime + moment("@Model.CreationTimestamp.ToLocalTime().ToString()").startOf("minutes").fromNow());
-
-                    $.ajax("/Generation/Progress?sessionId=@Model.SessionId&component=" + name,
-                    {
-                        method: "GET",
-                        dataType: "json",
-                        cache: false,
-                        success: function (data)
-                        {
-                            var progress = ((data.Progress.Count / data.Progress.Total) * 100).toFixed(2);
-
-                            if (data.Progress.Count >= data.Progress.Total)
-                            {
-                                $(self).removeClass("active");
-
-                                progress = 100;
-
-                                if ($(".progress-bar.active").size() == 0)
-                                {
-                                    clearInterval(interval);
-                                }
-                            }
-
-                            $(self).html(progress + "%");
-                            $(self).width(progress + "%");
-                        }
-                    });
-                });
-
-            }, 1000);
-        });
-
     </script>
 }

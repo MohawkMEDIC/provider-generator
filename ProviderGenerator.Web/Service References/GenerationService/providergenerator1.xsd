@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://marc-hi.ca/xmlns/patgensvc" elementFormDefault="qualified" targetNamespace="http://marc-hi.ca/xmlns/patgensvc" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://marc-hi.ca/xmlns/provgensvc" elementFormDefault="qualified" targetNamespace="http://marc-hi.ca/xmlns/provgensvc" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8000/providergenerator?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model" />
   <xs:element name="GenerateProviders">
     <xs:complexType>

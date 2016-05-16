@@ -78,6 +78,7 @@ namespace ProviderGenerator.Web.Controllers
 			SessionViewModel viewModel = new SessionViewModel();
 
 			viewModel.SessionId = sessionId;
+			viewModel.ProviderViewModels = new List<ProviderViewModel>();
 
 			TempData["success"] = "Generating data";
 

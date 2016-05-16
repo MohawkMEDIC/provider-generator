@@ -29,7 +29,7 @@ namespace ProviderGenerator.Messaging.Services
 	/// <summary>
 	/// Represents a provider generation service interface.
 	/// </summary>
-	[ServiceContract(Namespace = "http://marc-hi.ca/xmlns/patgensvc")]
+	[ServiceContract(Namespace = "http://marc-hi.ca/xmlns/provgensvc")]
 	public interface IGenerationService
 	{
 		[OperationContract(Name = "GenerateProviders", Action = "GenerateProviders")]

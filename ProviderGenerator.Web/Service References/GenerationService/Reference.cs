@@ -199,19 +199,22 @@ namespace ProviderGenerator.Web.GenerationService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://marc-hi.ca/xmlns/patgensvc", ConfigurationName="GenerationService.IGenerationService")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://marc-hi.ca/xmlns/provgensvc", ConfigurationName="GenerationService.IGenerationService")]
     public interface IGenerationService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="GenerateProviders", ReplyAction="http://marc-hi.ca/xmlns/patgensvc/IGenerationService/GenerateProvidersResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="GenerateProviders", ReplyAction="http://marc-hi.ca/xmlns/provgensvc/IGenerationService/GenerateProvidersResponse")]
         ProviderGenerator.Web.GenerationService.GenerateProvidersResponse GenerateProviders(ProviderGenerator.Web.GenerationService.GenerateProvidersRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="GenerateProviders", ReplyAction="http://marc-hi.ca/xmlns/provgensvc/IGenerationService/GenerateProvidersResponse")]
+        System.Threading.Tasks.Task<ProviderGenerator.Web.GenerationService.GenerateProvidersResponse> GenerateProvidersAsync(ProviderGenerator.Web.GenerationService.GenerateProvidersRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GenerateProviders", WrapperNamespace="http://marc-hi.ca/xmlns/patgensvc", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GenerateProviders", WrapperNamespace="http://marc-hi.ca/xmlns/provgensvc", IsWrapped=true)]
     public partial class GenerateProvidersRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://marc-hi.ca/xmlns/patgensvc", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://marc-hi.ca/xmlns/provgensvc", Order=0)]
         public ProviderGenerator.Web.GenerationService.GenerationRequest request;
         
         public GenerateProvidersRequest() {
@@ -224,10 +227,10 @@ namespace ProviderGenerator.Web.GenerationService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GenerateProvidersResponse", WrapperNamespace="http://marc-hi.ca/xmlns/patgensvc", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GenerateProvidersResponse", WrapperNamespace="http://marc-hi.ca/xmlns/provgensvc", IsWrapped=true)]
     public partial class GenerateProvidersResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://marc-hi.ca/xmlns/patgensvc", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://marc-hi.ca/xmlns/provgensvc", Order=0)]
         public ProviderGenerator.Web.GenerationService.GenerationResponse GenerateProvidersResult;
         
         public GenerateProvidersResponse() {
@@ -267,6 +270,10 @@ namespace ProviderGenerator.Web.GenerationService {
         
         public ProviderGenerator.Web.GenerationService.GenerateProvidersResponse GenerateProviders(ProviderGenerator.Web.GenerationService.GenerateProvidersRequest request) {
             return base.Channel.GenerateProviders(request);
+        }
+        
+        public System.Threading.Tasks.Task<ProviderGenerator.Web.GenerationService.GenerateProvidersResponse> GenerateProvidersAsync(ProviderGenerator.Web.GenerationService.GenerateProvidersRequest request) {
+            return base.Channel.GenerateProvidersAsync(request);
         }
     }
 }
