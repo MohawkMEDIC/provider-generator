@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="7cf46018-c585-4327-9217-fc8622c2bb78" activeEnvironment="Default" name="ProviderGenerator" resourceRoot="" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="11d22e91-dd65-4f9b-af8c-9b33f984546f" wsaVersion="NONE" name="BasicHttpBinding_IGenerationService" type="wsdl" bindingName="{http://tempuri.org/}BasicHttpBinding_IGenerationService" soapVersion="1_1" anonymous="optional" definition="http://localhost:8000/providergenerator?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8000/providergenerator?wsdl"><con:part><con:url>http://localhost:8000/providergenerator?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="GenerationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:i0="http://marc-hi.ca/xmlns/patgensvc" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
-  <wsdl:import namespace="http://marc-hi.ca/xmlns/patgensvc" location="http://localhost:8000/providergenerator?wsdl=wsdl0"/>
+<con:soapui-project id="7cf46018-c585-4327-9217-fc8622c2bb78" activeEnvironment="Default" name="ProviderGenerator" resourceRoot="" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="11d22e91-dd65-4f9b-af8c-9b33f984546f" wsaVersion="NONE" name="BasicHttpBinding_IGenerationService" type="wsdl" bindingName="{http://tempuri.org/}BasicHttpBinding_IGenerationService" soapVersion="1_1" anonymous="optional" definition="http://localhost:8000/providergenerator?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8000/providergenerator?wsdl"><con:part><con:url>http://localhost:8000/providergenerator?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="GenerationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:i0="http://marc-hi.ca/xmlns/provgensvc" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+  <wsdl:import namespace="http://marc-hi.ca/xmlns/provgensvc" location="http://localhost:8000/providergenerator?wsdl=wsdl0"/>
   <wsdl:types/>
   <wsdl:binding name="BasicHttpBinding_IGenerationService" type="i0:IGenerationService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -19,10 +19,10 @@
       <soap:address location="http://localhost:8000/providergenerator"/>
     </wsdl:port>
   </wsdl:service>
-</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8000/providergenerator?wsdl=wsdl0</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://marc-hi.ca/xmlns/patgensvc" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://marc-hi.ca/xmlns/patgensvc" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8000/providergenerator?wsdl=wsdl0</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://marc-hi.ca/xmlns/provgensvc" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://marc-hi.ca/xmlns/provgensvc" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata">
   <wsdl:types>
-    <xsd:schema targetNamespace="http://marc-hi.ca/xmlns/patgensvc/Imports">
-      <xsd:import schemaLocation="http://localhost:8000/providergenerator?xsd=xsd0" namespace="http://marc-hi.ca/xmlns/patgensvc"/>
+    <xsd:schema targetNamespace="http://marc-hi.ca/xmlns/provgensvc/Imports">
+      <xsd:import schemaLocation="http://localhost:8000/providergenerator?xsd=xsd0" namespace="http://marc-hi.ca/xmlns/provgensvc"/>
       <xsd:import schemaLocation="http://localhost:8000/providergenerator?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
       <xsd:import schemaLocation="http://localhost:8000/providergenerator?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model"/>
       <xsd:import schemaLocation="http://localhost:8000/providergenerator?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
@@ -37,35 +37,53 @@
   <wsdl:portType name="IGenerationService">
     <wsdl:operation name="GenerateProviders">
       <wsdl:input wsaw:Action="GenerateProviders" message="tns:IGenerationService_GenerateProviders_InputMessage"/>
-      <wsdl:output wsaw:Action="http://marc-hi.ca/xmlns/patgensvc/IGenerationService/GenerateProvidersResponse" message="tns:IGenerationService_GenerateProviders_OutputMessage"/>
+      <wsdl:output wsaw:Action="http://marc-hi.ca/xmlns/provgensvc/IGenerationService/GenerateProvidersResponse" message="tns:IGenerationService_GenerateProviders_OutputMessage"/>
     </wsdl:operation>
   </wsdl:portType>
-</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8000/providergenerator?xsd=xsd0</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://marc-hi.ca/xmlns/patgensvc" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://marc-hi.ca/xmlns/patgensvc">
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8000/providergenerator?xsd=xsd0</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://marc-hi.ca/xmlns/provgensvc" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://marc-hi.ca/xmlns/provgensvc">
   <xs:import schemaLocation="http://localhost:8000/providergenerator?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model"/>
   <xs:element name="GenerateProviders">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="count" type="xs:int"/>
+        <xs:element minOccurs="0" name="request" nillable="true" type="q1:GenerationRequest" xmlns:q1="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GenerateProvidersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GenerateProvidersResult" nillable="true" type="q1:GenerationResponse" xmlns:q1="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model"/>
+        <xs:element minOccurs="0" name="GenerateProvidersResult" nillable="true" type="q2:GenerationResponse" xmlns:q2="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:8000/providergenerator?xsd=xsd2</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model">
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:8000/providergenerator?xsd=xsd2</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model">
   <xs:import schemaLocation="http://localhost:8000/providergenerator?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+  <xs:import schemaLocation="http://localhost:8000/providergenerator?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+  <xs:complexType name="GenerationRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AgeDistribution" nillable="true" type="q1:ArrayOfdouble" xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+      <xs:element minOccurs="0" name="DateOfBirthEnd" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="DateOfBirthStart" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="GenderDistribution" nillable="true" type="q2:ArrayOfdouble" xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+      <xs:element minOccurs="0" name="NumberOfRecords" type="xs:int"/>
+      <xs:element name="SessionId" type="ser:guid"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GenerationRequest" nillable="true" type="tns:GenerationRequest"/>
   <xs:complexType name="GenerationResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="HasErrors" type="xs:boolean"/>
-      <xs:element minOccurs="0" name="Messages" nillable="true" type="q1:ArrayOfstring" xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+      <xs:element minOccurs="0" name="Messages" nillable="true" type="q3:ArrayOfstring" xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GenerationResponse" nillable="true" type="tns:GenerationResponse"/>
 </xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://localhost:8000/providergenerator?xsd=xsd3</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+  <xs:complexType name="ArrayOfdouble">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="double" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfdouble" nillable="true" type="tns:ArrayOfdouble"/>
   <xs:complexType name="ArrayOfstring">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string"/>
@@ -112,20 +130,56 @@
   <xs:attribute name="FactoryType" type="xs:QName"/>
   <xs:attribute name="Id" type="xs:ID"/>
   <xs:attribute name="Ref" type="xs:IDREF"/>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8000/providergenerator</con:endpoint></con:endpoints><con:operation id="5bcd672e-381b-4e0c-bc60-72a0bce8972f" isOneWay="false" action="GenerateProviders" name="GenerateProviders" bindingOperationName="GenerateProviders" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5ba96dd4-cf59-41af-a025-e2a030fcb1c8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/providergenerator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pat="http://marc-hi.ca/xmlns/patgensvc">\r
-   <soapenv:Header/>\r
-   <soapenv:Body>\r
-      <pat:GenerateProviders>\r
-         <!--Optional:-->\r
-         <pat:count>?</pat:count>\r
-      </pat:GenerateProviders>\r
-   </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="GenerateProviders"/></con:call></con:operation></con:interface><con:testSuite id="137b3f42-7447-4706-a3b9-a066b9f0cd49" name="BasicHttpBinding_IGenerationService TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="b67e2283-7c13-4cd1-99b0-20c013b796c3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="BasicHttpBinding_IGenerationService TestSuite" searchProperties="true"><con:settings/><con:testStep type="request" id="a2abbed4-e71d-499e-bdfb-930635e23584" name="GenerateProviders"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BasicHttpBinding_IGenerationService</con:interface><con:operation>GenerateProviders</con:operation><con:request name="GenerateProviders" id="f3d2ef2b-98a2-4336-b7c3-18841454afe1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/providergenerator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pat="http://marc-hi.ca/xmlns/patgensvc">\r
-   <soapenv:Header/>\r
-   <soapenv:Body>\r
-      <pat:GenerateProviders>\r
-         <!--Optional:-->\r
-         <pat:count>100</pat:count>\r
-      </pat:GenerateProviders>\r
-   </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="GenerateProviders" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8000/providergenerator</con:endpoint></con:endpoints><con:operation id="5bcd672e-381b-4e0c-bc60-72a0bce8972f" isOneWay="false" action="GenerateProviders" name="GenerateProviders" bindingOperationName="GenerateProviders" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5ba96dd4-cf59-41af-a025-e2a030fcb1c8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/providergenerator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prov="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model" xmlns:prov1="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model" xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:pat="http://marc-hi.ca/xmlns/patgensvc">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prov2:GenerateProviders xmlns:prov2="http://marc-hi.ca/xmlns/provgensvc">
+         <!--Optional:-->
+         <prov2:request>
+            <!--Optional:-->
+            <prov1:AgeDistribution>
+               <!--Zero or more repetitions:-->
+               <arr:double>?</arr:double>
+            </prov1:AgeDistribution>
+            <!--Optional:-->
+            <prov1:DateOfBirthEnd>?</prov1:DateOfBirthEnd>
+            <!--Optional:-->
+            <prov1:DateOfBirthStart>?</prov1:DateOfBirthStart>
+            <!--Optional:-->
+            <prov1:GenderDistribution>
+               <!--Zero or more repetitions:-->
+               <arr:double>?</arr:double>
+            </prov1:GenderDistribution>
+            <!--Optional:-->
+            <prov1:NumberOfRecords>?</prov1:NumberOfRecords>
+            <prov1:SessionId>?</prov1:SessionId>
+         </prov2:request>
+      </prov2:GenerateProviders>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="GenerateProviders"/></con:call></con:operation></con:interface><con:testSuite id="137b3f42-7447-4706-a3b9-a066b9f0cd49" name="BasicHttpBinding_IGenerationService TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="b67e2283-7c13-4cd1-99b0-20c013b796c3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="BasicHttpBinding_IGenerationService TestSuite" searchProperties="true"><con:settings/><con:testStep type="request" id="a2abbed4-e71d-499e-bdfb-930635e23584" name="GenerateProviders"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>BasicHttpBinding_IGenerationService</con:interface><con:operation>GenerateProviders</con:operation><con:request name="GenerateProviders" id="f3d2ef2b-98a2-4336-b7c3-18841454afe1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/providergenerator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prov="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model" xmlns:prov1="http://schemas.datacontract.org/2004/07/ProviderGenerator.Messaging.Model" xmlns:arr="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:pat="http://marc-hi.ca/xmlns/patgensvc">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <prov2:GenerateProviders xmlns:prov2="http://marc-hi.ca/xmlns/provgensvc">
+         <!--Optional:-->
+         <prov2:request>
+            <!--Optional:-->
+            <prov1:AgeDistribution>
+               <!--Zero or more repetitions:-->
+               <arr:double>?</arr:double>
+            </prov1:AgeDistribution>
+            <!--Optional:-->
+            <prov1:DateOfBirthEnd>?</prov1:DateOfBirthEnd>
+            <!--Optional:-->
+            <prov1:DateOfBirthStart>?</prov1:DateOfBirthStart>
+            <!--Optional:-->
+            <prov1:GenderDistribution>
+               <!--Zero or more repetitions:-->
+               <arr:double>?</arr:double>
+            </prov1:GenderDistribution>
+            <!--Optional:-->
+            <prov1:NumberOfRecords>?</prov1:NumberOfRecords>
+            <prov1:SessionId>?</prov1:SessionId>
+         </prov2:request>
+      </prov2:GenerateProviders>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="GenerateProviders" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
